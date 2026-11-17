@@ -1,9 +1,11 @@
 const { Router } = require("express");
 const {
     createOrder,
-    getAllOrders,
     listOrdersByState,
-    getOrderById
+    getOrderById,
+    updateOrder,
+    updateState,
+    deleteOrder
 } = require("./controllers/order");
 
 
@@ -17,8 +19,17 @@ routes.get("/", (req, res) => {
 
 
 routes.get("/orders", listOrdersByState);
+
 routes.get("/orders/:id", getOrderById);
 
 routes.post("/orders", createOrder);
+
+routes.put("/orders/:id", updateOrder);
+
+routes.put("/orders/:id/state", updateState);
+
+routes.delete("/orders/:id", deleteOrder);
+
+
 
 module.exports = routes;
